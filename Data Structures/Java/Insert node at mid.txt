@@ -1,0 +1,112 @@
+public class Main 
+{
+    
+   public class Linked
+   {
+       int data;
+       Linked next;
+
+      public Linked(int data)
+       {
+           this.data=data;
+           this.next=null;
+       }
+
+   }
+
+   public Linked head = null;
+   public Linked tail = null ;
+   int size;
+
+   public void addnode(int data)
+   {
+       Linked add = new Linked(data);
+       
+       if(head==null)
+       {
+           head =add;
+           tail=add;
+       }
+           
+       else
+       {
+        tail.next = add;  
+          
+        tail = add;  
+       }
+
+       size++;
+   }
+
+   public void mid(int data)
+   {
+          Linked add = new Linked(data);
+
+          if (head == null)
+          {
+              head =add;
+              tail =add;
+          }
+
+         else
+         {
+             Linked temp,current;
+
+             int count = (size%2==0)? (size/2) : (size+1/2);
+
+             temp = head;
+             current = null;
+
+             for(int i=0;i<count;i++)
+             {
+                 current = temp;
+                 temp =temp.next;
+             }
+
+             current.next = add;
+             add.next = temp;
+         }
+
+         size++;
+
+   }
+
+   public void display()
+   {
+       Linked current = head;
+       if(current==null)
+       {
+             System.out.println("linked list is empty");
+       }
+
+       System.out.println("Printing linked list");       
+       while(current!=null)
+       {
+           System.out.println(current.data+" ");
+           current=current.next;
+       }
+
+   }
+
+
+   public static void main(String[] args) 
+   {
+       Main obj = new Main() ;
+
+       obj.addnode(7);
+       obj.addnode(45);
+
+       obj.display();
+
+       obj.mid(8);
+
+       obj.display();
+
+       obj.mid(22);
+
+       obj.display();
+
+     
+   }
+
+}

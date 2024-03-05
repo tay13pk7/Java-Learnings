@@ -1,0 +1,136 @@
+#include<stdio.h>
+#include<stdlib.h>
+void insert();
+void del();
+void display();
+struct node
+{
+    int data;
+    struct node *next;
+
+};
+struct node *f;
+struct node *r;
+
+int main()
+{
+
+
+    int c=0;
+    printf("****Queue using Linked list*****\n");
+    printf("*********************************\n");
+
+    while(c!=4)
+    {
+        printf("Enter the number of the options given below\n");
+        printf("\n1.Insert()\n2.Delete()\n3.Display()\n4.Exit()\n");
+        printf("\nEnter your choice : \n");
+        scanf("%d",&c);
+
+        switch(c)
+        {
+        case 1 :
+            {
+
+            insert();
+            break;
+            }
+        case 2 :
+            {
+
+            del();
+            break;
+            }
+        case 3:
+            {
+                display();
+                break;
+            }
+        case 4 :
+            {
+                printf("Exiting..........");
+                break;
+            }
+        default :
+            {
+                printf("Please enter the valid choice\n");
+
+            }
+
+
+        };
+
+
+    }
+
+}
+
+void insert()
+{
+    struct node *ptr;
+    int item;
+
+    ptr = (struct node *) malloc (sizeof(struct node));
+    if(ptr == NULL)
+    {
+        printf("\nOVERFLOW\n");
+        return;
+    }
+    else
+    {
+        printf("\nEnter value?\n");
+        scanf("%d",&item);
+        ptr -> data = item;
+        if(f == NULL)
+        {
+            f = ptr;
+            r = ptr;
+            f -> next = NULL;
+            r -> next = NULL;
+        }
+        else
+        {
+            r -> next = ptr;
+            r = ptr;
+            r->next = NULL;
+        }
+    }
+}
+
+void del()
+{
+    struct node *ptr;
+    if(f==NULL)
+    {
+        printf("No element found?\n");
+        return;
+
+    }
+    else
+    {
+        ptr=f;
+        f=f->next;
+        free(ptr);
+    }
+
+}
+
+void display()
+{
+    struct node *ptr;
+    ptr=f;
+    if(f==NULL)
+    {
+        printf("Empty Queue\n");
+
+    }
+    else
+    {
+        printf("\nPrinting all the elements in the queue\n");
+        while(ptr!=NULL)
+        {
+            printf("\n%d\n",ptr->data);
+            ptr=ptr->next;
+        }
+    }
+}

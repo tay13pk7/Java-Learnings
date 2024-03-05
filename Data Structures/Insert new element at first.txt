@@ -1,0 +1,80 @@
+#include<stdio.h>
+#include<stdlib.h>
+ typedef struct node
+ {
+     int data;
+     struct node *next;
+ }node;
+node* insertNodeAsHeadNode(int head_value , node* start)
+ {
+     node* p;
+     p=(node*)malloc(sizeof(node));
+     p->data=head_value;
+     p->next=NULL;
+
+     p->next=start;
+     start=p;
+     return start;
+
+
+
+ }
+
+ int main()
+ {
+      int i,n,item,head_value;
+      struct node*p,*q,*head;
+      printf("enter the number of nodes");
+      scanf("%d",&n);
+
+      printf("enter the value of the head node");
+      scanf("%d",&item);
+
+      q=(struct node *)malloc(sizeof(struct node));
+       //a pointer q is created to point the memory location of the struct node and malloc imported using <stdlib....
+      q->data=item;
+      q->next=NULL;
+
+      head=q; //head pointer to point q
+      p=head;//p pointer to link the other node
+
+      for(i=1;i<n;i++)
+      {
+      printf("enter the value of the next node");
+      scanf("%d",&item);
+
+      q=(struct node *)malloc(sizeof(struct node));
+      q->data=item;
+      q->next=NULL;
+
+      p->next=q; //linking of node
+// till here new node is created. Next : we have to jump on the new node created using p so the code is given below
+      p=p->next;  // jump to the current node
+
+      }
+// now print the linked list given below
+      printf("\n");
+      p=head;  //for tracing the linked list from head to n^th node
+      while(p!=NULL)
+      {
+         printf(" \t %d",p->data);
+         p=p->next;
+
+      }
+
+
+      printf(" \n enter the value of new head node \n");
+      scanf("%d",&head_value);
+      head=insertNodeAsHeadNode(head_value,head);
+
+    printf("\n");
+	p = head;
+	while(p!=NULL)
+	{
+		printf("\t %d",p->data);
+		p = p->next;
+	}
+
+
+	return 0;
+ }

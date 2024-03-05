@@ -1,0 +1,100 @@
+public class Main 
+{
+    
+    int front,rear,size;
+    int[] a;
+    
+
+    Main(int cap)
+    {
+        front=rear=0;
+        size=cap;
+        a = new int[size];
+    }
+
+    void enqueue(int data)
+    {
+        if(size==rear)
+        {
+            System.out.println("Queue is full");
+        }
+        else
+        {
+            a[rear]=data;
+            rear++;
+        }
+        System.out.println("Element placed " + data);
+    }
+    
+     public void dequeue()
+     {
+        if (front == rear) {   
+            System.out.printf("\nQueue is empty\n");   
+            return; 
+        }  
+         else
+         {
+             for(int i=0;i<rear-1;i++)
+             {
+                 a[i]=a[i+1];
+             }
+         }
+        
+         if(rear<size)
+         {
+             a[rear]=0;
+         }
+
+         rear--;
+         System.out.println("Element removed");
+
+     }
+
+     void display()
+     {
+         if(front==rear)
+         {
+             System.out.println("Empty");
+         }
+
+         else
+         {
+             for(int i=0;i<rear;i++)
+             {
+                 System.out.print("Displaying  ");
+                 System.out.println(a[i]);
+            
+             }
+         }
+     }
+
+     void display_front()
+     {
+         if(front==rear)
+         {
+            System.out.println("Empty");
+         }
+         else
+         {
+             System.out.println("Front : "+a[front]);
+         }
+     }
+
+
+    
+
+    public static void main(String[] args) {
+        
+    Main obj = new Main(4);
+    obj.enqueue(7);
+    obj.enqueue(10);
+    obj.enqueue(30);
+    obj.display();
+    obj.dequeue();
+    obj.display_front();
+    obj.display();
+
+    
+
+    }
+}

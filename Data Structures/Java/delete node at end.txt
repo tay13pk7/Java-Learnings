@@ -1,0 +1,106 @@
+public class Main 
+{
+    
+   public class Linked
+   {
+       int data;
+       Linked next;
+
+      public Linked(int data)
+       {
+           this.data=data;
+           this.next=null;
+       }
+
+   }
+
+   public Linked head = null;
+   public Linked tail = null ;
+   
+
+   public void addnode(int data)
+   {
+       Linked add = new Linked(data);
+       
+       if(head==null)
+       {
+           head =add;
+           tail=add;
+       }
+           
+       else
+       {
+        tail.next = add;  
+          
+        tail = add;  
+       }
+
+      
+   }
+
+   public void delete()
+
+   {
+          if(head == null) {  
+            System.out.println("List is empty");  
+            return;  
+        }  
+        else {  
+            //Checks whether the list contains only one element  
+            if(head != tail ) {  
+                Node current = head;  
+                //Loop through the list till the second last element such that current.next is pointing to tail  
+                while(current.next != tail) {  
+                    current = current.next;  
+                }  
+                //Second last element will become new tail of the list  
+                tail = current;  
+                tail.next = null;  
+            }  
+            //If the list contains only one element  
+            //Then it will remove it and both head and tail will point to null  
+            else {  
+                head = tail = null;  
+            }  
+        }  
+
+
+   }
+
+   public void display()
+   {
+       Linked current = head;
+       if(current==null)
+       {
+             System.out.println("linked list is empty");
+       }
+
+       System.out.println("Printing linked list");       
+       while(current!=null)
+       {
+           System.out.println(current.data+" ");
+           current=current.next;
+       }
+
+   }
+
+
+   public static void main(String[] args) 
+   {
+       Main obj = new Main() ;
+       obj.addnode(7);
+       obj.addnode(4);
+       obj.addnode(11);
+       obj.addnode(6);
+
+       obj.display();
+
+       obj.delete();
+
+       obj.display();
+       
+
+     
+   }
+
+}

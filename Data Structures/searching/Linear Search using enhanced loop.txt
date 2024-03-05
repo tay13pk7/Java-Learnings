@@ -1,0 +1,20 @@
+public class Main { 
+    
+ 
+    public static void main(String[] args) {  
+    
+        int[] a = {1,2,3,7,5};
+        int x = 7;
+
+        for(int i : a)   // i gets an element of a like i=1, then 2,3,7,5
+        {
+            if(i==7)     // if(a[i]==x)  then it is like a[1],a[2],a[3],a[7] which will index out of bonds error
+            {
+                System.out.println("Yess");
+            }
+        }
+
+} 
+} 
+
+

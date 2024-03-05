@@ -1,0 +1,5 @@
+Java is an object-oriented language. ... 
+The name of a class can be used as a type, 
+so you can declare an object-type variable or specify that a method returns an object. 
+If you declare a variable using the name of a class for its type, 
+that variable can contain a reference to an object of that class.

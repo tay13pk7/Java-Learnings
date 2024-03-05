@@ -1,0 +1,76 @@
+public class Main 
+{
+    private Node front; 
+    private Node rear;
+    private int size; 
+
+    public class Node
+    {
+          int data;
+          Node next;
+    }
+
+    private Main()
+    {
+        front=null;
+        rear=null;
+        size=0;
+    }
+   
+    boolean empty()
+    {
+        return (size==0);
+    }
+
+    public void enqueue(int data)
+    {
+       Node temp = rear;
+       rear = new Node();
+       rear.data = data;
+       rear.next = null;
+
+       if(empty())
+       {
+           front=rear;
+       }
+       else
+       {
+           temp.next=rear;
+       }
+       size++;
+       System.out.println("Enqueued : " +data);
+    }
+    
+    public int dequeue()
+    {
+       int data = front.data;
+       front = front.next;
+       if(empty())
+       {
+           rear=null;
+       }
+       size--;
+       System.out.println("dequeued + " + data);
+       return data;
+
+    }
+
+    public void print() {  
+        System.out.println("Front of the queue:" + front.data  
+        + " Rear of the queue:" + rear.data);
+    }  
+    
+
+    public static void main(String[] args) {
+        
+    Main obj  = new Main();
+
+    obj.enqueue(7);
+    obj.enqueue(6);
+    obj.enqueue(4);
+    obj.print();
+    obj.dequeue();
+    obj.print();
+
+    }
+}
