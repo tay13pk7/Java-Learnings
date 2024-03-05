@@ -1,0 +1,34 @@
+import org.json.simple.JSONObject;
+
+import org.json.simple.JSONValue;
+
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Converting JSON data into Java String format 
+        String k = "{\"Full Name\":\"Prasad Kute\", \"Tuition Fees\":65400.0, \"Roll No.\":7}";   // consider this as a JSON
+
+        Object jsonobj = JSONValue.parse(k);
+
+        //System.out.println(jsonobj);
+
+
+        JSONObject convert = (JSONObject)jsonobj;  // Typecasting to JSONObject type for further manipulation
+
+       // System.out.println(convert);
+
+        String name = (String)convert.get("Full Name");
+
+        Double fees = (Double)convert.get("Tuition Fees");
+
+        long rollno = (long)convert.get("Roll No.");
+
+        System.out.println(name);
+        System.out.println(fees);
+        System.out.println(rollno);
+
+
+    }
+}

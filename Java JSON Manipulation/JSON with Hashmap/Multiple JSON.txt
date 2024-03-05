@@ -1,0 +1,48 @@
+import java.sql.*;
+import java.util.HashMap;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+public class Main {
+    public static void main(String[] args) {
+        // Sample JSON data
+        String[] jsonResponses = {
+            "{\"Name\":\"Prasad Kute\",\"place\":{\"City\":\"Chikhli\"}}",
+            "{\"Name\":\"John Doe\",\"place\":{\"City\":\"New York\"}}"
+        };
+
+        // JDBC Connection
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/yourdatabase", "username", "password")) {
+            String insertQuery = "INSERT INTO personality (name_person, destination) VALUES (?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+                // Iterate over each JSON object
+                for (String jsonResponse : jsonResponses) {
+                    // Parse JSON
+                    JsonParser jsonParser = new JsonParser();
+                    JsonObject jsonObject = jsonParser.parse(jsonResponse).getAsJsonObject();
+
+                    // Extract values
+                    String extractname = jsonObject.get("Name").getAsString();
+                    JsonObject getplace = jsonObject.getAsJsonObject("place");
+                    String extractplace = getplace.get("City").getAsString();
+
+                    // Create HashMap and put values
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("name_person", extractname);
+                    map.put("destination", extractplace);
+
+                    // Set parameters for PreparedStatement using map values
+                    preparedStatement.setString(1, map.get("name_person"));
+                    preparedStatement.setString(2, map.get("destination"));
+
+                    // Execute insert
+                    preparedStatement.executeUpdate();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}

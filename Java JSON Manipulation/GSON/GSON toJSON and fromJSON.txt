@@ -1,0 +1,29 @@
+package org.practicJSON;
+
+import com.google.gson.Gson;
+
+
+public class Main {
+    public static void main(String[] args) {
+
+     Gson g = new Gson();
+
+     Details obj = new Details();
+
+     obj.setName("Prasad Kute");
+     obj.setFavPerson("Taylor Swift");
+     obj.setGame("GTA San Andreas");
+     obj.setMyNumber(7);
+
+     String strjson = g.toJson(obj);
+
+     System.out.println(strjson);
+
+     Details getfromJSON = g.fromJson(g.toJson(obj), Details.class);
+
+     System.out.println(getfromJSON);  // to print this object please use toString method and write the state of the object or implementation of the object
+
+
+    }
+}
+

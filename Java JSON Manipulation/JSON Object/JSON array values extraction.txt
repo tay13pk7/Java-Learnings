@@ -1,0 +1,35 @@
+package org.example;
+
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+//import org.json.simple.JSONArray;
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        JsonArray array = new JsonArray();
+        array.add("Taylor");
+        array.add("Prasad");
+        array.add("Kute");
+
+        JsonObject obj = new JsonObject();
+        obj.add("Profile", array);
+
+        JsonElement profileElement = obj.get("Profile");
+
+        if (profileElement.isJsonArray()) {
+            JsonArray profileArray = profileElement.getAsJsonArray();
+            System.out.println(profileArray);
+
+            for (JsonElement element : profileArray) {
+                String name = element.getAsString();
+                System.out.println(name);
+            }
+        }
+
+
+    }
+}

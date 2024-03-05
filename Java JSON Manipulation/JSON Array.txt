@@ -1,0 +1,39 @@
+package org.practicJSON;
+
+import org.json.simple.JSONObject;
+
+import org.json.simple.JSONValue;
+
+import org.json.JSONArray;
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        JSONArray ja = new JSONArray();
+        ja.put(Boolean.TRUE);
+        ja.put("lorem ipsum");
+
+        JSONObject jo = new JSONObject();
+        jo.put("name", "jon doe");
+        jo.put("age", "22");
+        jo.put("city", "chicago");
+
+        ja.put(jo);
+
+        System.out.println(ja);
+
+       JSONArray jaa = new JSONArray("[true, \"lorem ipsum\", 215]"); //         JSONArray jaa = new JSONArray("[true, \"lorem ipsum\", 215]"); // 
+
+
+        System.out.println(jaa);
+
+    }
+}
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20231013</version>
+        </dependency>

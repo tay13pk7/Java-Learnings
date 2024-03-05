@@ -1,0 +1,47 @@
+{
+  "message":"Hi",
+  "place":{"name":"world"}
+}
+
+// This is a normal JSON 
+
+
+for practice convert this JSON into this format means that is the json we could use for practice
+
+("{\"message\":\"Hi\",\"place\":{\"name\":\"World!\"}}");
+
+
+-----------------------------------------------------
+
+
+
+JSON is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate. 
+It consists of key-value pairs, where the value can be a string, number, object, array, boolean, or null.
+
+{
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+
+
+There are three elements. Each key-value pair constitutes one element, and there are three such pairs:
+
+Element 1: Key "name", Value "John"
+Element 2: Key "age", Value 30
+Element 3: Key "city", Value "New York"
+So, the total number of elements in this JSON object is three.
+
+
+------------------------------------------------------------
+
+
+There are two libraries for JSONArray
+
+import com.google.gson.JsonArray;
+import org.json.simple.JSONArray;
+
+
+
+
+

@@ -1,0 +1,63 @@
+Task : You get a JSON response , store it into table using hashmap, first convert into hashmap format
+
+
+
+package org.example;
+
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.function.BiConsumer;
+//import org.json.simple.JSONArray;
+
+public class Main {
+    public static void main(String[] args) {
+
+        String jsonResponse = "{\"Name\":\"Prasad Kute\",\"place\":{\"City\":\"Chikhli\"}}";
+
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObject = jsonParser.parse(jsonResponse).getAsJsonObject();
+//        System.out.println(jsonObject);
+
+        String extractname  = jsonObject.get("Name").getAsString();
+        JsonObject getplace = jsonObject.getAsJsonObject("place");
+        String extractplace = getplace.get("City").getAsString();
+//        System.out.println(extractname +" "  + extractplace);
+
+
+        HashMap<String,String> map = new HashMap<>();
+        map.put("name_person",extractname);
+        map.put("destination",extractplace);
+
+
+        map.forEach((key, value) -> {
+            System.out.println(key + "=" + value + " ");
+        });
+
+
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "prasad")) {
+            String insertQuery = "INSERT INTO personality (name_person, destination) VALUES (?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+                // Iterate through the map and set parameters for the PreparedStatement
+                preparedStatement.setString(1, map.get("name_person"));
+                preparedStatement.setString(2, map.get("destination"));
+                // Execute batch insert
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+}

@@ -1,0 +1,52 @@
+package org.practicJSON;
+
+import org.json.simple.JSONObject;
+
+import org.json.simple.JSONValue;
+
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+
+public class Main {
+    public static void main(String[] args) {
+
+     Details obj = new Details();
+
+     obj.setName("Prasad Kute");
+     obj.setFavPerson("taylor Swift");
+     obj.setGame("GTA San Andreas");
+     obj.setMyNumber(7);
+
+        JSONObject json = new JSONObject();
+
+        json.put("Name", obj.getGame());
+        json.put("My Game",obj.getGame());
+        json.put("The person I love", obj.getFavPerson());
+        json.put("My Number",obj.getMyNumber());
+
+
+     System.out.println(json);
+
+
+        // Using a LinkedHashMap to maintain order
+        Map<String, Object> jsonMap = new LinkedHashMap<>();
+
+        jsonMap.put("Name", obj.getName());
+        jsonMap.put("My Games", obj.getGame());
+        jsonMap.put("The person I love", obj.getFavPerson());
+        jsonMap.put("My Number", obj.getMyNumber());
+
+        // Convert the LinkedHashMap to a JSONObject
+        JSONObject javajson = new JSONObject();
+
+        javajson.putAll(jsonMap);
+
+        System.out.println(javajson);
+
+    }
+}

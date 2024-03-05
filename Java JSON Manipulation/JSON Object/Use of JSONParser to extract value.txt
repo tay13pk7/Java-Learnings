@@ -1,0 +1,45 @@
+package org.example;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Details obj = new Details();
+
+        obj.setName("Pashu Kute");
+        obj.setFavPerson("Taylor Swift");
+        obj.setMyNumber(96940942);
+        obj.setGame("Read Dead Redemption 2");
+
+        // Convert Details object to JSONObject
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", obj.getName());
+        jsonObject.put("favPerson", obj.getFavPerson());
+        jsonObject.put("myNumber", obj.getMyNumber());
+        jsonObject.put("game", obj.getGame());
+
+        // Convert JSONObject to JSON string
+        String strjson = jsonObject.toJSONString();
+
+        System.out.println("Full JSON: " + strjson);
+
+        // Extracting favPerson from JSON using JSONParser
+        JSONParser parser = new JSONParser();
+        try {
+            JSONObject parsedJson = (JSONObject) parser.parse(strjson);
+            String favPerson = (String) parsedJson.get("favPerson");
+
+            System.out.println(favPerson);
+
+            JSONObject favPersonObj = new JSONObject();
+            favPersonObj.put("favPerson", favPerson);
+            System.out.println("Fav Person as JSONObject: " + favPersonObj);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+}

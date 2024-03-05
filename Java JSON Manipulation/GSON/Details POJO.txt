@@ -1,0 +1,60 @@
+package org.practicJSON;
+
+public class Details {
+
+    String name;
+    String favPerson;
+    String game;
+    double myNumber;
+
+   /* public Details(String name,String favPerson,String game,double myNumber)
+    {
+        this.name = name;
+        this.favPerson = favPerson;
+        this.game = game;
+        this.myNumber = myNumber;
+    }*/
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFavPerson() {
+        return favPerson;
+    }
+
+    public void setFavPerson(String favPerson) {
+        this.favPerson = favPerson;
+    }
+
+    public String getGame() {
+        return game;
+    }
+
+    public void setGame(String game) {
+        this.game = game;
+    }
+
+    public double getMyNumber() {
+        return myNumber;
+    }
+
+    public void setMyNumber(double myNumber) {
+        this.myNumber = myNumber;
+    }
+
+
+    @Override
+    public String toString() {
+        return
+                "name='" + name + '\'' +
+                ", favPerson='" + favPerson + '\'' +
+                ", game='" + game + '\'' +
+                ", myNumber=" + myNumber ;
+    }
+
+}

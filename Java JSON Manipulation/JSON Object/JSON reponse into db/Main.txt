@@ -1,0 +1,31 @@
+package org.example;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+
+        DbConnection conn = new DbConnection();
+
+        JsonParser parser = new JsonParser();
+        JsonElement jsonElement = parser.parse("{\"message\":\"Hi\",\"place\":{\"name\":\"World!\"}}");
+        JsonObject rootObject = jsonElement.getAsJsonObject();  // getAsJsonObject(); this passes an instance of JsonObject so need to typecast
+        String message = rootObject.get("message").getAsString(); // get property "message"
+        System.out.println(message);
+        JsonObject childObject = rootObject.getAsJsonObject("place"); // get place object
+        String place = childObject.get("name").getAsString(); // get property "name"
+        System.out.println(place);
+        System.out.println(message + " " + place); // print "Hi World
+
+
+        conn.insertIntodb(message, place);
+
+    }
+}
