@@ -1,0 +1,10 @@
+Camel Casing
+
+class and interface - Start with capital  - Calc, Runnable
+variable and method - start with small  - age , func()
+constants - all Capital letter / uppercase - PIE, BRAND
+
+
+
+// showMyMARKS() -- method with many names
+// MYdata -- class with many names

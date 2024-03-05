@@ -1,0 +1,73 @@
+import java.util.*;
+
+class Student
+{
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    private String name;
+    private int age;
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+
+
+
+
+public class Main{
+    public static void main(String args[]){
+
+       List<String> names = Arrays.asList("Prasad","Taylor","Cristiano","Messi");
+
+       List<Student> studentList = new ArrayList<>();
+
+
+//       for(String name : names)
+//       {
+//           studentList.add(new Student(name));
+//       }
+//
+//       System.out.println(studentList);
+
+
+       studentList = names.stream().map(name->new Student(name)).toList();  // creating three Student Objects
+
+       System.out.println(studentList);
+
+
+       // or use a Constructor reference
+
+        List<Student> studentList1 = new ArrayList<>();
+
+        studentList1 = names.stream().map(Student::new).toList();  // :: Constructor reference
+
+        System.out.println(studentList1);
+        
+
+
+
+    }
+}

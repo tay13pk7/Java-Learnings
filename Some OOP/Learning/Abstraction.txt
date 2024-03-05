@@ -1,0 +1,144 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public interface Order {
+    public void addItem(Item item);
+    public double getTotalCost();
+}
+
+public class OnlineOrder implements Order {
+    private List<Item> items = new ArrayList<Item>();
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public double getTotalCost() {
+        double total = 0.0;
+        for (Item item : items) {
+            total += item.getPrice();
+        }
+        return total;
+    }
+}
+
+public class InStoreOrder implements Order {
+    private List<Item> items = new ArrayList<Item>();
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public double getTotalCost() {
+        double total = 0.0;
+        for (Item item : items) {
+            total += item.getPrice() * 1.1;
+        }
+        return total;
+    }
+}
+
+public class Customer {
+    private Order order;
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public double getTotalCostOfOrder() {
+        return order.getTotalCost();
+    }
+}
+
+public class Item {
+    private String name;
+    private double price;
+
+    public Item(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}
+
+public class Example {
+    public static void main(String[] args) {
+        // Create some items
+        Item item1 = new Item("Widget", 10.0);
+        Item item2 = new Item("Gadget", 20.0);
+        
+        // Create an online order and add the items
+        OnlineOrder onlineOrder = new OnlineOrder();
+        onlineOrder.addItem(item1);
+        onlineOrder.addItem(item2);
+        
+        // Create an in-store order and add the items
+        InStoreOrder inStoreOrder = new InStoreOrder();
+        inStoreOrder.addItem(item1);
+        inStoreOrder.addItem(item2);
+        
+        // Create a customer and set the order to the online order
+        Customer customer = new Customer();
+        customer.setOrder(onlineOrder);
+        System.out.println("Total cost of online order: " + customer.getTotalCostOfOrder());
+        
+        // Set the order to the in-store order
+        customer.setOrder(inStoreOrder);
+        System.out.println("Total cost of in-store order: " + customer.getTotalCostOfOrder());
+    }
+}
+
+
+
+
+This program creates two different orders (an online order and an in-store order), adds some items to each order, creates a customer object, 
+and sets the order for the customer object to each of the two different orders in turn. 
+Finally, it prints out the total cost of each order using the getTotalCostOfOrder() method of the Customer class.
+
+Note that the Customer class is not tightly coupled to either the OnlineOrder or the InStoreOrder class. 
+Instead, it depends on the Order interface, which allows it to work with any class that implements the Order interface correctly.
+
+
+
+In this code, we have an interface called "Order" that specifies the behavior of an order, including methods to add items to the order and get the total cost of the order. We also have a class called "OnlineOrder" that implements the "Order" interface and provides a specific implementation of the behavior.
+
+The "Customer" class depends on the "Order" interface rather than the "OnlineOrder" class. 
+This allows us to change the implementation of the order without affecting the customer class. For example, we could create a new class called "InStoreOrder" that also implements the "Order" interface, 
+and we could pass an instance of this class to the customer object instead of an instance of "OnlineOrder". As long as the "InStoreOrder" class implements the "Order" interface correctly, 
+the customer class will work correctly without any changes.
+
+This demonstrates how using an interface can help us achieve loose coupling, because the customer class is not tightly coupled to a specific implementation of the order behavior. 
+Instead, it is coupled to an interface that can be implemented by multiple classes, allowing for greater flexibility and modularity in the code.
+
+When we say that interfaces allow us to achieve loose coupling, what we mean is that interfaces help us to reduce the interdependence between different parts of a software system.
+
+In object-oriented programming, it is common to create classes that depend on other classes in order to work correctly. For example, a class that represents a customer might depend on a class that represents an order. This dependency can be implemented by having the customer class create an instance of the order class, or by having the customer class receive an instance of the order class as a parameter to one of its methods.
+
+However, this creates tight coupling between the customer class and the order class, because any change in the order class will affect the customer class. For example, if we add a new property to the order class, we may need to modify the customer class to take this new property into account.
+
+By using interfaces, we can break this dependency and achieve loose coupling. Instead of depending directly on the order class, the customer class can depend on an interface that the order class implements. This allows us to change the implementation of the order class without affecting the customer class, as long as the new implementation still conforms to the interface.
+
+In this way, interfaces allow us to reduce the interdependence between different parts of a software system, making the code more modular and easier to maintain.
+
+
+In Java, an interface is a collection of abstract methods that can be implemented by any class. An interface defines a contract that specifies the behavior of an object, but not how that behavior is implemented.
+
+Interfaces are used in Java for a variety of reasons:
+
+To achieve abstraction: Interfaces allow you to separate the specification of a behavior from its implementation. This allows you to write code that is independent of any specific implementation and is easier to maintain and modify.
+
+To support multiple inheritance: Java does not allow a class to inherit from multiple classes, but a class can implement multiple interfaces. 
+This allows you to achieve some of the benefits of multiple inheritance without the complexity that can arise from it.
+
+To provide a common interface for unrelated classes: Interfaces can be used to provide a common interface for classes that are not related by inheritance. This allows you to write more generic code that can work with a wider range of classes.
+
+To achieve loose coupling: Interfaces allow you to decouple the code that uses an object from the implementation of that object. This makes your code more modular and easier to maintain.
+
+To enable the creation of pluggable components: Interfaces allow you to define a contract that a component must conform to in order to be used by other components. This enables the creation of pluggable components that can be easily replaced or upgraded without affecting the rest of the system.

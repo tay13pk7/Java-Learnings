@@ -1,0 +1,55 @@
+
+class A
+{
+  public void show()
+  {
+    System.out.println("Hello A");
+  }
+}
+
+
+class B extends A
+{
+  public void show()
+  {
+        System.out.println("Hello B");
+
+  }
+}
+
+
+class C extends A
+{
+   public void show()
+  {
+        System.out.println("Hello C");
+
+  }
+} 
+
+public class Main 
+{
+  public static void main(String[] args) {
+    
+    A obj = new A();
+    obj.show();
+
+    obj = new B();
+    obj.show();
+
+    obj= new C();
+    obj.show();
+
+    // This is dynamic method dispatch, runtime polymorphism
+    // stack , memory description in notebook
+
+  
+  }
+}
+
+
+
+
+
+
+

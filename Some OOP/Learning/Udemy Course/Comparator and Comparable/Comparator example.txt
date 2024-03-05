@@ -1,0 +1,72 @@
+import java.util.Comparator;
+import java.util.List;
+import java.util.*;
+
+class Student
+{
+    int age;
+    String name;
+
+    public String toString() {
+        return "Student [age=" + age + ", name=" +name +"]";
+    }
+
+//
+
+
+    public Student(int age,String name)
+    {
+        this.age=age;
+        this.name=name;
+    }
+
+}
+
+
+public class Test1 {
+    public static void main(String[] args) throws InterruptedException  {
+
+        Comparator<Student> comp = new Comparator<Student>() {
+            @Override
+            public int compare(Student i, Student j) {
+
+                if(i.age>j.age)
+                    return 1;
+                else
+                    return -1;
+
+            }
+        };
+
+        List<Student> nums = new ArrayList<Student>();
+
+        nums.add(new Student(38,"Ronaldo"));
+        nums.add(new Student(36,"Messi"));
+        nums.add(new Student(22,"Haaland"));
+        nums.add(new Student(37,"Modric"));
+
+        Collections.sort(nums,comp);
+
+        for(Student n:nums)
+        {
+            System.out.println(n);
+        }
+
+    }
+}
+
+
+explanation : 
+The toString() method is called automatically in Java when you try to print an object using the System.out.println() method or when you concatenate the object with a string using the + operator. This is because Java automatically converts an object to its string representation when it needs to be displayed as a string.
+
+Here's an example to illustrate when toString() is called:
+
+
+Student student = new Student();
+student.setName("John");
+student.setAge(20);
+
+
+Now, if you try to print this Student object using System.out.println(), like this:
+
+System.out.println(student);

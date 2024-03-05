@@ -1,0 +1,33 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+class Main{
+    public static void main(String args[]){
+
+       List<String> names = Arrays.asList("Prasad","Taylor","Cristiano","Messi");
+
+    //   String getname = names.stream().filter(str->str.contains("T")).findFirst();  This is what we do and get a compile time error
+
+        Optional<String> getname = names.stream().filter(str->str.contains("x")).findFirst();
+
+        System.out.println(getname.orElse("Not found"));
+
+
+        // or  more easy than  this
+
+        String getname1 = names.stream().filter(str->str.contains("Taylor")).findFirst().orElse("Not found 404");
+
+        System.out.println(getname1);
+
+
+
+
+    }
+}
+
+
+
+// Here we are trying to use Optional class
+// Optional class handles the NUll Pointer Exception and prints the problem in terminal without giving a compile time error
+

@@ -1,0 +1,31 @@
+
+class PrasadException extends Exception  // by extending we inherit the properties of the Exception class which allows to
+{                                        // the customized exception to define its own functionality
+    public PrasadException(String str)
+    {
+        super(str);   // we are using the super class constructor for printing the message
+    }
+
+}
+
+public class Test1 {
+    public static void main(String[] args) {
+        int i = 4;
+        int j = 20;
+        int c;
+
+        try {
+            c = 7 / i;
+            if (j == 20)
+                throw new PrasadException("You got that");
+        } catch (ArithmeticException e) {
+            System.out.println("Hi, User, you are setting up the wrong value");
+        } catch (PrasadException e1) {
+            System.out.println("Bye: " + e1);
+        }
+
+        System.out.println("Thanks for Visiting!");
+    }
+}
+
+// The theory is we can create custom exception according to our type

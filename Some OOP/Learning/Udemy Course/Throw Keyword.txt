@@ -1,0 +1,23 @@
+
+public class Test1 {
+    public static void main(String[] args) {
+        int i = 4;
+        int j = 20;
+        int c;
+
+        try {
+            c = 7 / i;
+            if (j == 20)
+                throw new Exception("Sorry we don't have that option");
+        } catch (ArithmeticException e) {
+            System.out.println("Hi, User, you are setting up the wrong value");
+        } catch (Exception e1) {
+            System.out.println("Bye: " + e1.getMessage());
+        }
+
+        System.out.println("Thanks for Visiting!");
+    }
+}
+
+
+// Note :  At a time only one exception occurs and one catch block only gets executed out of the multiple

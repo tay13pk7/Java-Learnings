@@ -1,0 +1,50 @@
+class Bank{  
+float getRateOfInterest(){return 0;}  
+}  
+class SBI extends Bank{  
+float getRateOfInterest(){return 8.4f;}  
+}  
+class ICICI extends Bank{  
+float getRateOfInterest(){return 7.3f;}  
+}  
+class AXIS extends Bank{  
+float getRateOfInterest(){return 9.7f;}  
+}  
+class TestPolymorphism{  
+public static void main(String args[]){  
+Bank b;  
+b=new SBI();  
+System.out.println("SBI Rate of Interest: "+b.getRateOfInterest());  
+b=new ICICI();  
+System.out.println("ICICI Rate of Interest: "+b.getRateOfInterest());  
+b=new AXIS();  
+System.out.println("AXIS Rate of Interest: "+b.getRateOfInterest());  
+}  
+}  
+
+public class GFG {
+ 
+    // First addition function
+    public static int add(int a, int b)
+    {
+        return a + b;
+    }
+ 
+    // Second addition function
+    public static double add(double a, double b)
+    {
+        return a + b;
+    }
+ 
+    // Driver code
+    public static void main(String args[])
+    {
+        // Here, the first addition
+        // function is called
+        System.out.println(add(2, 3));
+ 
+        // Here, the second addition
+        // function is called
+        System.out.println(add(2.0, 3.0));
+    }
+}

@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.*;
+
+class Student implements Comparable<Student>
+{
+    int age;
+    String name;
+
+    public String toString() {
+        return "Student [age=" + age + ", name=" +name +"]";
+    }
+
+    public Student(int age,String name)
+    {
+        this.age=age;
+        this.name=name;
+    }
+    @Override                                      // this must be there to implement comparable interface
+    public int compareTo(Student that) {
+        if(this.age >that.age)
+            return 1;
+        else
+            return -1;
+    }
+}
+
+
+public class Test1 {
+    public static void main(String[] args) throws InterruptedException  {
+
+
+
+        List<Student> nums = new ArrayList<Student>();
+
+        nums.add(new Student(38,"Ronaldo"));
+        nums.add(new Student(36,"Messi"));
+        nums.add(new Student(22,"Haaland"));
+        nums.add(new Student(37,"Modric"));
+
+        Collections.sort(nums);
+
+        for(Student n:nums)
+        {
+            System.out.println(n);
+        }
+
+    }
+}

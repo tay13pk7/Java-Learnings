@@ -1,0 +1,29 @@
+
+
+@FunctionalInterface
+public interface A
+{
+    void show();
+}
+
+/*class B implements A
+{
+ public void show()
+ {
+    System.out.println("Hello");
+ }
+} */
+
+public class Main {
+    
+    public static void main(String[] args) {
+        
+               //paramter                             // implementation block
+       A obj = ()          ->                        System.out.println("Hello");
+                           //lambda function 
+       obj.show();
+
+     
+
+    }
+}

@@ -1,0 +1,40 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class Main 
+{
+    public static void main(String[] args) {
+        
+
+        List<Integer> nums =  Arrays.asList(4,5,6,7,8);
+        
+        
+        //Using External For loop , 
+        // Indexing
+
+        for(int i=0;i<nums.size();i++)
+        {
+            System.out.println(nums.get(i));
+        }
+       
+        //Using External For loop , 
+        // Fetching
+
+        for(int n : nums )
+        {
+            System.out.println(nums.get(n));
+        }
+
+        // Reducing this through foreach , Java  8
+        // Fetching from array
+        // Using lambda expression (Functional Interface)
+        // Enhanced for loop
+
+        nums.forEach(n->System.out.println(n));
+
+        // n is parameter , -> lambda expression 
+
+ 
+        
+    }
+}

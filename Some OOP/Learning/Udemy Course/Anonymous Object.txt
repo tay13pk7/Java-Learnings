@@ -1,0 +1,39 @@
+class Demo
+{
+ public void football()
+ {
+  System.out.println("Siuuuuuu");
+ }
+
+}
+
+
+public class Main 
+{
+  public static void main(String[] args) {
+    
+    Demo obj = new Demo();         // normal object creation
+    obj.football();
+
+    // for example
+    int marks;
+    marks = 100;
+
+    // see how the marks variable assigment is done in two steps similarly object creation is done two steps
+
+    Demo obj1;              // 1st
+    obj1 = new Demo();      // 2nd  see like the mark variable
+
+    obj1.football();
+
+    // this can be done in one step called anonymous object
+
+    new Demo().football();  
+
+    new Demo().football();  
+
+    // everytime wee write new Demo()..... it creates a new object
+
+
+  }
+}

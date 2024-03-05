@@ -1,0 +1,59 @@
+
+//Example of an abstract class that has abstract and non-abstract methods  
+ abstract class Bike{  
+   Bike()
+  {
+System.out.println("bike is created");
+}  
+   abstract void run();  
+   void changeGear(){System.out.println("gear changed");}  
+ }  
+//Creating a Child class which inherits Abstract class  
+ class Honda extends Bike{  
+ void run(){System.out.println("running safely..");}  
+ }  
+//Creating a Test class which calls abstract and non-abstract methods  
+ class TestAbstraction2{  
+ public static void main(String args[]){  
+  Bike obj = new Honda();    //  obj is a reference variable pointing to constructor of Honda Class 
+  obj.run();  
+  obj.changeGear();  
+ }  
+}  
+
+
+Here the reference variable(obj) is following Abstraction which set of rules and action to be followed of the Abstact class
+so need to implement all the methods of thew abstract class.
+
+All explanation ---->
+
+In the given code, Bike() is a constructor of the abstract class Bike. When an instance of a class is created using the new keyword, 
+a constructor is called to initialize the object's state. In this case, when an object of the Honda class is created using the new keyword, 
+the constructor of the parent class Bike is automatically called as the first step in the object's initialization process.
+
+The constructor Bike() prints the message "bike is created" to the console when it is called. It is a default constructor, 
+which means it has no parameters and is automatically provided by the compiler if no constructor is defined in the class. 
+The purpose of the constructor is to initialize any instance variables or other state that the object requires.
+
+Since Bike is an abstract class, it cannot be instantiated directly. However, it can be used to create instances of its concrete subclasses, such as Honda. 
+In the TestAbstraction2 class, an instance of the Honda class is created and assigned to a reference of type Bike. 
+The run() method of Honda is called on this object, which is a concrete implementation of the abstract method declared in the Bike class. 
+The changeGear() method, which is not abstract and has a default implementation in the Bike class, is also called on the Bike reference.
+
+--------------------------------------------------------------------------------------------
+
+Bike obj = new Honda(); 
+
+The line Bike obj = new Honda(); creates an instance of the Honda class and assigns it to a reference variable named obj of type Bike. 
+This is an example of polymorphism in Java, where an object of a subclass (Honda) is assigned to a reference variable of its superclass (Bike).
+
+The new keyword creates a new object of the Honda class by calling its constructor. The constructor initializes the object's state and returns a reference to the object. 
+The reference is then assigned to the obj variable of type Bike, which means that obj can refer to any object that is a subclass of Bike.
+
+Since Honda is a subclass of Bike, it inherits all the properties and methods of the Bike class, including the abstract method run() and the non-abstract method changeGear(). 
+The run() method in Honda provides a concrete implementation of the abstract method declared in Bike, while the changeGear() method inherits its default implementation from the Bike class.
+
+Therefore, when obj.run() is called, the run() method of the Honda class is executed, which prints the message "running safely.." 
+to the console. Similarly, when obj.changeGear() is called, the changeGear() method of the Bike class is executed, which prints the message "gear changed" to the console.
+
+

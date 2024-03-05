@@ -1,0 +1,33 @@
+import java.util.*;  
+public class CollectionsExample {  
+    public static void main(String a[]){         
+        List<Integer> list = new ArrayList<Integer>();  
+        list.add(46);  
+        list.add(67);  
+        list.add(24);  
+        list.add(16);  
+        list.add(8);  
+        list.add(12);  
+        System.out.println("Value of minimum element from the collection: "+Collections.min(list));  
+    }  
+}   
+
+
+In Java, the List interface represents an ordered collection of elements, which allows duplicates and can be accessed using an index. 
+ArrayList is one of the classes that implement the List interface, and it provides a dynamic array implementation of the List interface.
+
+When creating a new ArrayList object, you need to specify the type of elements that the list will hold. 
+This is done by passing the element type as a parameter to the ArrayList constructor. For example, in the following code:
+
+List<Integer> list = new ArrayList<Integer>();
+The ArrayList constructor takes the element type "Integer" as a parameter, creating a new ArrayList object that can hold Integer objects. 
+The "list" variable is of type List<Integer>, which means that it is a reference to an object that implements the List interface, and can hold Integer objects.
+
+list? -->
+
+The "list" variable is a reference to an object that implements the List interface. 
+The actual object that is created by the constructor is an instance of the ArrayList class, which implements the List interface.
+
+So, "list" is not an object of the ArrayList class, but rather a reference to an object of the ArrayList class that also implements the List interface. 
+This is an example of polymorphism, where a reference of a parent interface type can refer to an object of any class that implements that interface.
+

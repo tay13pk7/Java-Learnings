@@ -1,0 +1,107 @@
+Statement : By the below code anyone is able easily access my personal information , which I don't want to share
+Solution : Encapsulation 
+Implementation : Using getter setter
+
+class  Demo
+{
+  String name = "Prasad";
+  int age = 22;
+}
+
+public class Main 
+{
+  public static void main(String[] args) {
+    
+      Demo obj = new Demo();
+      System.out.println(obj.name + " "+ obj.age);
+
+  }
+}
+
+I have some info in my brain present in small packets of data(encapsulation)
+I have to share them , to share I can talk , write it down or convey
+that is what we will use methods to access the info  from the private variable given below
+
+
+
+
+solution : 
+
+
+class  Demo
+{
+  private String name = "Prasad";
+  private int age = 22;
+
+  public String getname()
+  {
+    return this.name;
+  }
+
+  public int getage()
+  {
+    return this.age;
+  }
+
+
+}
+
+public class Main 
+{
+  public static void main(String[] args) {
+    
+      Demo obj = new Demo();
+
+      System.out.println(obj.getname() + " "+ obj.getage());
+
+  }
+}
+
+
+what if there is no name or age given then use setter , 
+
+
+class  Demo
+{
+  private String name ;
+  private int age ;
+
+  public String getname()
+  {
+    return this.name;
+  }
+
+  public void setname(String a)
+  {
+      name = a;
+  }
+
+  public int getage()
+  {
+    return this.age;
+  }
+
+
+  public void setage(int b)
+  {
+    age = b;
+  }
+
+
+}
+
+public class Main 
+{
+  public static void main(String[] args) {
+    
+      Demo obj = new Demo();
+
+      obj.setname("Prasad");
+      obj.setage(22);
+
+      System.out.println(obj.getname() + " "+ obj.getage());
+
+  }
+}
+
+

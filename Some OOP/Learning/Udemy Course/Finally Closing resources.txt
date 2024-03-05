@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Test1 {
+    public static void main(String[] args) {
+
+        Scanner sc = null;
+        try {
+            sc = new Scanner(System.in);
+            int num = sc.nextInt();
+            System.out.println(num);
+        } finally {
+            sc.close();
+        }
+    }
+}
+
+// What are we do here with the finally block trying to close all the resources
+// For example if we open a file or database connection, it is our duty to close it.

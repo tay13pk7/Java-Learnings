@@ -1,0 +1,99 @@
+class Program implements Runnable
+{
+  int c = 0;
+
+  public synchronized void run()
+  {
+
+     for(int i = 0 ;i< 1000;i++)
+	 {
+		c++;
+	 }
+	 
+  }
+
+}
+public class Main 
+{
+	public static void main(String[] args) throws InterruptedException {
+		
+        Program p = new Program();
+
+		Thread th1 = new Thread(p);
+
+		Thread th2 = new Thread(p);
+
+
+		th1.start();
+
+		th2.start();
+
+		th1.join();
+
+		th2.join();
+
+
+		System.out.println(p.c);
+	
+	} 
+}
+
+The counter will print 2000 only when synchronized word is used 
+
+If you won't use synchronized, it will create a race condition and two threads will access or try to access the function together as per scheduler.
+
+
+
+
+Same you can write as , obj is using the lambda function in main
+
+
+
+class Counter
+{
+	int count;
+//	public void increment()
+	public synchronized void increment()
+	{
+		count++;
+	}
+}
+
+public class Demo {
+    public static void main(String[] args) throws InterruptedException{   
+    	
+    	Counter c=new Counter();
+    	
+    	Runnable obj1=()->
+    	{
+//    		for(int i=1;i<=1000;i++)
+    		for(int i=1;i<=10000;i++)
+    		{
+    			c.increment();
+    		}
+    	};
+    	
+    	Runnable obj2=()->
+    	{
+//    		for(int i=1;i<=1000;i++)
+    		for(int i=1;i<=10000;i++)
+    		{
+    			c.increment();
+    		}
+    	};
+    	
+    	Thread t1=new Thread(obj1);
+    	Thread t2=new Thread(obj2);
+    	 	
+    	t1.start();
+    	t2.start();
+    	
+    	t1.join();
+    	t2.join();
+    	
+    	System.out.println(c.count);
+    }
+}
+
+    
+

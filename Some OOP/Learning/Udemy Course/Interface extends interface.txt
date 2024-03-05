@@ -1,0 +1,53 @@
+interface A
+{
+    int num = 1;
+    String name = "Prasad";
+
+    void work();
+    void sleep();
+}
+
+interface x
+{
+    void repeat();
+}
+
+interface y extends x
+{
+
+}
+
+class Dothings implements A,y
+{
+    public void work()
+    {
+        System.out.println(name + "=" + "Work Hard" );
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Sleep");
+    }
+
+    @Override
+    public void repeat() {
+        System.out.println(name + "=" + "Just Repeat" );
+    }
+}
+
+public class Main
+{
+    public static void main(String[] args) {
+
+          A obj = new Dothings();
+
+          obj.work();
+          obj.sleep();
+
+
+          x obj1 = new Dothings();
+
+          obj1.repeat();
+          
+    }
+}

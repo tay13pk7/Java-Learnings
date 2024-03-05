@@ -1,0 +1,40 @@
+
+class A
+{
+  public void A()
+  {
+    System.out.println("Hello");
+  }
+}
+
+
+class B extends A
+{
+  public void B()
+  {
+        System.out.println("Fuck Barbie");
+
+  }
+}
+
+public class Main 
+{
+  public static void main(String[] args) {
+    
+    A obj = new B();   // Reference of super class , object of child class 
+		       // obj variable of type A , implementation in B
+
+    obj.A();
+    obj.B();
+  }
+}
+
+
+In the main() method, we create an object obj of type A and initialize it with a new instance of B. 
+This is possible because of polymorphism, where a reference variable of the base class (A in this case) can hold an object of the derived class (B in this case).
+
+Now, let's address the error you mentioned: "The method B() is undefined for the type A."
+
+The error occurs in this line: obj.B();
+
+Since the reference variable obj is of type A, the compiler looks for the method B() in class A. However, there is no method named B() in class A, and that's why you're getting the error.

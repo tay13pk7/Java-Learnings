@@ -1,0 +1,24 @@
+class Main
+{
+    int a;
+    Main(int b)
+    {
+        a=b;
+    }
+
+    Main()
+    {
+        System.out.println("Hello Taylor");
+    }
+
+
+    public static void main(String[] args)
+    {
+     Main obj = new Main();
+     
+
+    }
+}
+
+
+Output : Hello Taylor
